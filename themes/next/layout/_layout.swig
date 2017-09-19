@@ -19,6 +19,10 @@
     {% set container_class = container_class + 'sidebar-position-' + theme.sidebar.position %}
   {% endif %}
 
+  <div id='wx_pic' style='margin:0 auto;display:none;'>
+  <img src='/images/pic300.jpg' />
+  </div>
+
   <div class="{{ container_class }} {% block page_class %}{% endblock %} ">
     <div class="headband"></div>
 
