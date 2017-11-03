@@ -9,9 +9,8 @@ categories: 业界
 他们在学校里学过编程，但是对这个行业的现实一无所知。
 [Patrick McKenzie](http://www.kalzumeus.com/)是美国一家小软件公司的老板，他写了一篇长文，介绍这个行业的一些实际情况。我看了以后很感慨，有些地方很受启发,
 
-> 原文地址：http://www.kalzumeus.com/2011/10/28/dont-call-yourself-a-programmer/
-<br>
-中文翻译片段：http://www.ruanyifeng.com/blog/2011/10/dont_call_yourself_a_programmer.html
+>  [原文地址](http://www.kalzumeus.com/2011/10/28/dont-call-yourself-a-programmer/)
+, [中文翻译片段](http://www.ruanyifeng.com/blog/2011/10/dont_call_yourself_a_programmer.html)
 
 # Don't Call Yourself A Programmer, And Other Career Advice
 
