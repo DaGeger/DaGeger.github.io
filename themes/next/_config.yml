@@ -49,6 +49,7 @@ menu:
   home: /
   archives: /archives/
   frontend: /categories/前端/
+  server: /categories/后端/
   news: /categories/业界/
   cloud: /categories/云计算/
   tools: /categories/研发工具/
@@ -80,6 +81,7 @@ menu_icons:
   frontend: code
   news: newspaper-o
   tools: wrench
+  server: server
 
 
 # ---------------------------------------------------------------

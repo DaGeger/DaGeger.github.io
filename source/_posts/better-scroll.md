@@ -26,7 +26,7 @@ this.betterscroll=new BScroll(this.$els.betterscroll,{
 
 ```
 注意：Vue中数据更新是异步的，在数据还没有加载完之前，BScroll是无法获取目标内容容器的高度的，就会出现无法滚动的现象。
-这里可以用$nextTick()解决。
+这里可以用`$nextTick()`解决。
 vue官方是这样说明的
 
 ```javascript
