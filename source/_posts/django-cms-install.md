@@ -1,5 +1,5 @@
 ---
-title: Django CMS教程一：安装
+title: Django CMS教程
 date: 2017-12-20 11:53:38
 tags:
 categories: 后端
