@@ -3,6 +3,11 @@ title: 互联网革命
 date: 2017-08-26 22:51:27
 tags: 业界 云计算 互联网
 categories: 业界
+cover: cover.jpg
+author:
+    nick: DaGege
+    link: 
+subtitle: 本篇文章为云计算的商业动力之企业ICT转型之一
 ---
 
 > *本篇文章为云计算的商业动力之企业ICT转型之一*

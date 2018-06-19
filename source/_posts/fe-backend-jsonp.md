@@ -1,13 +1,20 @@
 ---
 title: 跨域以及一些解决方法
 date: 2017-12-01 20:48:54
-tags:
+tags: 跨域
 categories: 前端
+cover: cover.jpg
+author:
+    nick: DaGege
+    link: 
+subtitle: 浏览器对于javascript的同源策略的限制,例如a.cn下面的js不能调用b.cn中的js,对象或数据(因为a.cn和b.cn是不同域),所以跨域就出现了.
 ---
 # 跨域
+
 最近在回顾一些知识，归纳一下以前的笔记再结合各个资料说一下我对跨域和跨域问题的解决方法。
 产生跨域安全问题不是后台服务器不允许前台调用，
 其本质是浏览器的同源策略(Same-origin policy)造成的，它是浏览器最基本和最核心的安全机制，同源是指URI scheme、host name、port number相同，借用一下网上的栗子：
+
 ```
 http://www.bear.cn/index.html 调用   http://www.bear.cn/server.php  非跨域
 
@@ -32,17 +39,22 @@ https://www.bear.cn/index.html 调用   http://www.bear.cn/server.php  跨域,�
 ![](./1.jpg)
 
 # Jsonp
+
 JSONP是JSON with padding（填充式JSON或参数式JSON）的简写，是应用JSON的一种办法，JSONP看起来和JSON差不多，只不过是被包含在函数调用中的JSON，就像这样:
 
 ```javascript
 callback({"name": "Nicholas Bear"})
 ```
+
 JSONP由两部分组成：回调函数和数据。回调函数是当浏览器接收到响应时调用的函数，回电函数名一般在请求中指定，数据就是回调函数的参数。如下就是典型的JSONP请求：
+
 ```
 http://somewhere-else/json/?callback=handleResponse
 ```
+
 这里指定的回调函数就是`handleResponse()`
 JSONP实现原理是通过JS脚本动态生成一个script元素，为其src属性指定一个跨域URL，这里的script元素和img、link元素类似，都有能力不受限制地从其他域加载资源。它并不是官方的协议，而是一种hack手段，看一个简单的栗子：
+
 ```javascript
 function handleResponse(res) {
     alert("got message", res);
@@ -52,6 +64,7 @@ var script = document.createElement("script"),
 script.src = "http://somewhere-else/json/?callback=handleResponse";
 body.insertBefore(script, body.firstChild);
 ```
+
 JSONP实现跨域访问非常方便，简单易用，但是也有不足的地方：
 
 首先，从它的实现方式可以看出来，它是发起一个资源获取请求，是`GET`类型的，在日常开发中常用的请求类型还有`POST`，`PUT`，`DELETE`，而`JSONP`只能发起`GET`请求，是它的一大短板。
@@ -63,16 +76,21 @@ JSONP实现跨域访问非常方便，简单易用，但是也有不足的地方
 最后，由于它的请求类型并不是XHR，就缺少了一些事件处理程序，要追踪JSONP请求是否失败并不容易，或者为JSONP请求增加定时器，超时就视为请求失败，接下来就再次发送请求或者做其他事情，但是每个用户的网络状况并不能保证，这样做也不是万全之策。
 
 # CORS
+
 CORS(Cross-origin resource sharing)跨域源资源共享，是W3C的一个工作草案， 定义了在跨域访问时，浏览器与服务器的沟通方式，具体实现为，使用自定义的HTTP头部让浏览器与服务器进行沟通，从而决定跨域请求或响应时应该成功，还是应该失败。
 
 比如说发起一个GET跨域请求，Content-type是text/plain,在发送跨域请求前，浏览器会为http头部加上一个额外的Origin头部，其中包含了页面的源信息(协议、域名和端口号)，这个额外的Origin决定了服务器是否响应该请求。一个Origin头部实例：
+
 ```
 Origin: https://www.somewhere-else.net
 ```
+
 如果服务器认可该请求就会在响应头加上`Access-Control-Allow-Origin`标志字段,值可以是与请求头带来的Origin相同，如果该服务器上的是公共资源，值就是“\*”。
+
 ```
 Access-Control-Allow-Origin: https://www.somewhere-else.net
 ```
+
 如果响应头中没有这个这个字段，说明服务器拒绝了这次跨域请求，会抛出一个错误，但是并不能被xhr的`onerror`事件捕获。默认情况下跨域请求都是不带凭证的（`cookie`，`HTTP`认证及服务端SSL证明等），通过修改xhr对象的`withCredentials`(IE10以前的版本不支持该属性)设置为true，可以指定某个请求携带凭证。如果服务器允许跨域请求携带凭证响应头部会有标示。
 `Access-Control-Allow-Credentials: true`
   如果发送的是带凭证的请求，响应头里却没有这个字段，那么浏览器就不会吧响应交给JS，意思是xhr获取到的`responseText`为空，status为0，这个时候`onerror`可以捕获到该错误.
@@ -83,6 +101,7 @@ XHR对象在跨域时也是有限制的:
 调用`getAllResponseHeaders()`方法总会返回空字符串
 
 # CORS的实现:
+
 ```javascript
 var xhr = new XMLHttpRequest();
 xhr.onreadystateChange = function() {
@@ -96,6 +115,7 @@ xhr.onreadystateChange = function() {
 }
 xhr.open("get", "http://www.somewhere-else.com/page", true);
 xhr.send(null);
+
 ```
 发送CORS请求和发送普通的xhr对象差别不大, 只需要在地址处写绝对地址即可.跨域所需要做的工作就交给浏览器,对于用户来说是透明.
 
@@ -109,6 +129,7 @@ cookie不会随请求发送,也不会随响应返回
 XDR对象和xhr的使用方法类型,也是创造一个`XDomainRequest`的实例,调用`open()`方法,再调用`send()`方法,但是与xhr对象的`open()`不同,XDR对象的`open()`方法只接受两个参数:请求的类型和URL,XDR发送的请求都是异步执行的。而且XDR对象无法访问`status`属性，所以在使用XDR时一定得通过`onerror`事件处理程序来捕获错误.
 
 ## 简单请求
+
 跨域请求在发送前,浏览器会检查这个请求是不是简单请求,简单请求满足下面两个条件:
 
 * 请求方式为`HEAD`,`POST`,`GET`
@@ -118,8 +139,6 @@ XDR对象和xhr的使用方法类型,也是创造一个`XDomainRequest`的实例
   * Content-Language
   * Last-Event-ID
   * Content-Type(application/x-www-form-urlencode,multipart/form-data,text/plain)
-
-
 
 如果满足这些条件，浏览器就会在请求头部增加额外的Origin字段后发送跨域请求。<br>
 响应头一般包含这些字段：
@@ -134,6 +153,7 @@ XDR对象和xhr的使用方法类型,也是创造一个`XDomainRequest`的实例
 错误提示里说如果想要在请求头中携带凭证，那么响应头中的`Access-Control-Allow-Origin`必须和请求头中的Origin一致，而不能是“\*”，解决方法很简单，修改一下后端代码就可以了。
 
 # 非简单请求
+
 CORS通过一种叫做`Preflighted Requestes`预请求的透明服务器验证机制支持开发人员使用自定义的头部，GET和POST之外的方法，以及不同类型的主题内容。也就是说想要发送这种非简单的跨域请求以前会先发送一个询问请求（携带非简单请求部分信息）来询问服务器是否同意这次非简单请求，这种询问请求使用OPTIONS方法，发送以下头部：
 
 * Origin：和简单请求相同
@@ -148,22 +168,28 @@ CORS通过一种叫做`Preflighted Requestes`预请求的透明服务器验证�
 * Access-Control-Max-Age: 预请求的有效期或者缓存存活时间(秒)
 
 比如说我现在发送了一个自定义头部字段`f-headers1`和`f-headers2`,方法为post的非简单请求,那么首先发送的预请求头部会包含以下信息:
+
 ```
 Origin: http://www.yourhostname.com
 Access-Control-Request-Method: POST
 Access-Control-Request-Headers: f-headers1, f-headers2
 ```
+
 如果服务器允许这样的非简单请求的跨域访问,返回的响应头会包含这些字段:
+
 ```
 Access-Control-Allow-Origin: http://www.yourhostname.com
 Access-Control-Allow-Method: POST,GET,PUT,DELETE
 Access-Control-Allow-Headers: f-headers1, f-headers2
 Access-Control-Max-Age: 3600
 ```
+
 预请求结束后,结果将按照响应中指定的时间缓存起来,下次再发送这样的非简单请求之前就不会再发送询问请求.
 
 # Cookie
+
 上述几条都是解决跨域请求资源，但是如果想要获取非同源的`cookie`，`LocalStorage`或`IndexDB`怎么办。`cookie`是服务器在浏览器上写下的一小段认证信息，大小一般是4k，根据浏览器的不同，每个域允许种下的cookie数量也不同。`cookie`只有在同源的域下才能共享，但是我们可以通过修改`document.domain`来共享`cookie`，如下所示
+
 ```javascript
 // a.abc.com
 document.domain = "abc.com";
@@ -172,12 +198,16 @@ document.cookie = "name=bingo";
 document.domain = "abc.com";
 console.log(document.cookie); // "name=bingo"
 ```
+
 但是这种方法前提是这两个网页一级域名相同，一级域名或者叫根域名相同是什么意思呢，比如说这里有个两个域名`www.abc.com`和`www.f.abc.com`它们的一级域名都是`abc.com`。二级域名就是增加了一级包括`www`，比如说`www.zdt.com`,`netgo.ccdn.com`,`www.baidu.com`等等.三级,四级域名同理.
 而且这种方法只适用于`cookie`和`iframe`.无法获取`locastorage`和`IndexDB`.
 
 # iframe
+
 利用iframe解决跨域问题也是一种可取的办法.光是给iframe增加src获取其他页面的资源是不现实,必须借助一些特性实现hack手段.
+
 # document.domain
+
 两个iframe之间或者父窗口和子窗口之间。如上述例子里通过改变相同主域的`document.domain`可以跨域获取cookie，也可以获取对方的全局变量。这种方法和跨域获取cookie一样，只适合具有相同主域的跨域访问。实现原理为相同主域的网站设置相同的`document.domain`,浏览器就任务它们是同源的,这种方式比较简单，但也有安全问题，如果某一个网站被攻击后，另一个网站就会有安全漏洞
 
 # window.name

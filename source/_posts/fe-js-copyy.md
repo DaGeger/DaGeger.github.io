@@ -1,8 +1,13 @@
 ---
 title: js 中的浅拷贝和深拷贝
 date: 2017-09-13 10:37:42
-tags: 前端
+tags: JS
 categories: 前端
+cover: cover.jpg
+author:
+    nick: DaGege
+    link: 
+subtitle: 最近在读 zepto 的源码，深有感触，感觉随便一段代码都可以延伸出一大堆的知识点，在看到深拷贝和浅拷贝的时候
 ---
 ## 前言
 
@@ -82,10 +87,10 @@ console.log(a === b); // false
 ![](./img-jsstack-2.png)
 ### 传值与传址
 了解了基本数据类型与引用类型的区别之后，我们就应该能明白传值与传址的区别了。
-在我们进行赋值操作的时候，基本数据类型的赋值（=）是在内存中新开辟一段栈内存，然后再把再将值赋值到新的栈中。例如：
-```javascript
-var a = 10;
-var b = a;
+在我们进行img-jsstack-4.png类型的赋值（=）是在内存中新开辟一段栈内存，然后再把再将值赋值到新的栈中。例如：
+```javascrimg-jsstack-4.png
+var a = 10img-jsstack-4.png
+var b = a;img-jsstack-4.png
 a ++ ;
 console.log(a); // 11
 console.log(b); // 10

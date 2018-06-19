@@ -1,8 +1,13 @@
 ---
 title: Vue中better-scroll插件的使用
 date: 2017-12-17 14:01:16
-tags: Vue better-scroll
+tags: Vue
 categories: 前端
+cover: cover.jpg
+author:
+    nick: DaGege
+    link: 
+subtitle: BetterScroll 是一款重点解决移动端各种滚动场景需求的开源插件(GitHub地址),适用于滚动列表、选择器、轮播图、索引列表
 ---
 #### 实现原理：父容器固定高度，并设置属性overflow: hidden，使得子元素高度超出容器后能被隐藏。better-scroll作用在父容器上。
 

@@ -1,0 +1,12 @@
+- title: github
+  icon: icon-github
+  link: https://github.com/DaGeger/
+- title: email
+  icon: icon-email
+  link: mailto:dageger@163.com
+- title: weibo
+  icon: icon-weibo
+  link: http://weibo.com/huleidep
+- title: rss
+  icon: icon-rss
+  link: /atom.xml

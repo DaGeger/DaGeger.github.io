@@ -3,10 +3,14 @@ title: 真的知道什么是程序员吗
 date: 2017-11-03 17:44:21
 tags: 程序员 建议
 categories: 业界
+cover: cover.png
+author:
+    nick: Patrick McKenzie
+    link: http://www.kalzumeus.com/
+subtitle: 每年都有无数年轻程序员，加入软件行业。 他们在学校里学过编程，但是对这个行业的现实一无所知。
 ---
 
-> 每年都有无数年轻程序员，加入软件行业。
-他们在学校里学过编程，但是对这个行业的现实一无所知。
+> 每年都有无数年轻程序员，加入软件行业。 他们在学校里学过编程，但是对这个行业的现实一无所知。
 [Patrick McKenzie](http://www.kalzumeus.com/)是美国一家小软件公司的老板，他写了一篇长文，介绍这个行业的一些实际情况。我看了以后很感慨，有些地方很受启发,
 
 >  [原文地址](http://www.kalzumeus.com/2011/10/28/dont-call-yourself-a-programmer/)

@@ -3,6 +3,11 @@ title: AngularJS跨页面传值（ui-router）
 date: 2017-08-23 18:15:28
 tags: angularjs
 categories: 前端
+cover: cover.jpg
+author:
+    nick: DaGege
+    link: 
+subtitle: 今天碰到一个需求，同事开发的业务中需要跳到我的业务中，并传递参数过来，这就需要将参数通过url路由传递过来
 ---
 > 摘要： Angularjs中通过url传递参数。
 

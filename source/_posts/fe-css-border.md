@@ -1,8 +1,13 @@
 ---
 title: CSS中设置border属性为0与none的区别
 date: 2017-09-19 22:37:14
-tags: 前端
+tags: CSS
 categories: 前端
+cover: cover.jpg
+author:
+    nick: DaGege
+    link: 
+subtitle: 相似的效果是否存在不同的差异
 ---
 
 > 在我们设置CSS的时候，对标签元素不设置边框属性或者取消边框属性一般设置为：border:none;或border:0;两种方法均可。border:none;与border:0;的区别体现有两点：一是理论上的性能差异、二是浏览器兼容性的差异。

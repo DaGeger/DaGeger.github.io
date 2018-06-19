@@ -1,8 +1,13 @@
 ---
 title: Django CMS教程
 date: 2017-12-20 11:53:38
-tags:
+tags: Django
 categories: 后端
+cover: cover.png
+author:
+    nick: DaGege
+    link: 
+subtitle: Django-cms并不是一个开箱即用的产品，在网上根本找不到模板或者主题，官方文档也是英文所写，对于新手快速上手有一定困难度
 ---
 
 ### 前言：
@@ -23,23 +28,32 @@ source env/bin/activate
 ```shell
 env\Scripts\activate
 ```
+
 #### 更新pip
+
 `pip` 是Python的安装器，保证你安装的是最新的。
+
 ```shell
 pip install --upgrade pip
 ```
+
 #### 使用django CMS安装器
+
 安装：
+
 ```shell
 pip install djangocms-installer
 ```
+
 它提供一个新的命令，`djangocms`
 
 创建一个新的工作目录，然后进入这个目录
+
 ```shell
 mkdir tutorial-project
 cd tutorial-project
 ```
+
 创建一个Django项目，命名为`mysite`
 ```shell
 djangocms -f -p . mysite
