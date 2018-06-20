@@ -165,7 +165,7 @@ subtitle_desc: 凡心所向 素履所往 生如逆旅 一苇以航
 introduction: 不思量，自难忘！
 
 # your blog favicon icon, support two ways: local and online. the local way need you to put the icon under  themes/hexo-theme-skapp/source/img directory
-favicon_ico: http://oo12ugek5.bkt.clouddn.com/blog/images/favicon.ico
+favicon_ico: /img/favicon.ico
 
 # blog logo icon in the upper left corner. support the local way and online way. 
 logo: /img/logo.png
@@ -192,3 +192,8 @@ about:
   info: 本站是基于 Hexo 搭建的静态资源博客，主要用于分享日常学习、生活及工作的一些心得总结，欢迎点击右下角订阅 rss。
   address: China
   email: dageger@163.com
+
+flowchart:
+  # raphael:   # optional, the source url of raphael.js
+  # flowchart: # optional, the source url of flowchart.js
+  options: flowchart
