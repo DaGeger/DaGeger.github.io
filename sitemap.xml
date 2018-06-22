@@ -121,13 +121,6 @@
   </url>
   
   <url>
-    <loc>http://dageger.cn/frontend/index.html</loc>
-    
-    <lastmod>2017-09-04T07:14:23.156Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://dageger.cn/2017/08/21/fe-execution-sequence/</loc>
     
     <lastmod>2017-09-04T07:14:23.156Z</lastmod>
@@ -135,7 +128,7 @@
   </url>
   
   <url>
-    <loc>http://dageger.cn/resume/index.html</loc>
+    <loc>http://dageger.cn/frontend/index.html</loc>
     
     <lastmod>2017-09-04T07:14:23.156Z</lastmod>
     
@@ -150,6 +143,13 @@
   
   <url>
     <loc>http://dageger.cn/news/index.html</loc>
+    
+    <lastmod>2017-09-04T07:14:23.156Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://dageger.cn/resume/index.html</loc>
     
     <lastmod>2017-09-04T07:14:23.156Z</lastmod>
     
