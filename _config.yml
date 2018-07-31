@@ -118,6 +118,7 @@ hfc_css:
 hfc_js:
   enable: true
   mangle: true
+  compress: true
   exclude: 
     - '*.min.js'
 
@@ -197,3 +198,6 @@ flowchart:
   # raphael:   # optional, the source url of raphael.js
   # flowchart: # optional, the source url of flowchart.js
   options: flowchart
+
+# Busuanzi
+busuanzi: true
